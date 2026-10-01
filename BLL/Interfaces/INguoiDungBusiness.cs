@@ -10,7 +10,7 @@ namespace BLL.Interfaces
     public interface INguoiDungBusiness
     {
         bool Register(RegisterRequestModel request);
-        NguoiDung Authenticate(LoginRequestModel request)
+        NguoiDung Authenticate(LoginRequestModel request);
 
     }
 }

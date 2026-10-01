@@ -75,7 +75,7 @@ namespace BLL
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.MaNguoiDung.ToString()),
                     new Claim(ClaimTypes.Name, user.HoTen),
-                    //new Claim(ClaimTypes.Role, user.VaiTro)
+                    new Claim(ClaimTypes.Role, user.VaiTro)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(
