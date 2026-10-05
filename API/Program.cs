@@ -1,5 +1,4 @@
-﻿using Asp.Versioning;
-using Asp.Versioning.ApiExplorer;
+﻿
 using BLL;
 using BLL.Interfaces;
 using DAL;
@@ -93,17 +92,7 @@ try
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
 
-    //builder.Services.AddApiVersioning(options =>
-    //{
-    //    options.DefaultApiVersion = new ApiVersion(1, 0);
-    //    options.AssumeDefaultVersionWhenUnspecified = true;
-    //    options.ReportApiVersions = true;
-    //}).AddApiExplorer(options =>
-    //{
-    //    options.GroupNameFormat = "'v'VVV";
-    //    options.SubstituteApiVersionInUrl = true;
-    //});
-
+    
     builder.Services.AddSwaggerGen();
 
     var app = builder.Build();
