@@ -87,8 +87,8 @@ try
         };
     });
 
-    // 7. API VERSIONING (Quản lý phiên bản API v1, v2)
-    // 7. API VERSIONING (Quản lý phiên bản API v1, v2)
+    
+    // 7. API VERSIONING 
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
 

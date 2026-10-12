@@ -17,23 +17,24 @@ namespace DAL
 
         public bool Create(NguoiDung model)
         {
-            _dbHelper.Execute("SP_NguoiDung_ThemMoi", new
+            _dbHelper.Execute("sp_nguoidung_create", new
             {
-                TenDangNhap = model.TenDangNhap,
-                MatKhauHash = model.MatKhauHash,
-                HoTen = model.HoTen,
-                Email = model.Email,
-                SoDienThoai = model.SoDienThoai,
-                MaVaiTro = model.MaVaiTro
+                ten_dang_nhap = model.TenDangNhap,
+                mat_khau_hash = model.MatKhauHash,
+                ho_ten = model.HoTen,
+                email = model.Email,
+                so_dien_thoai = model.SoDienThoai,
+                ma_vai_tro = model.MaVaiTro
             }, CommandType.StoredProcedure);
             return true;
         }
 
         public NguoiDung GetByUsername(string username)
         {
+            // Gọi tên SP mới và đổi biến sang chuẩn snake_case
             return _dbHelper.QueryFirstOrDefault<NguoiDung>(
-                "SP_NguoiDung_LayTheoTaiKhoan",
-                new { TenDangNhap = username },
+                "sp_nguoidung_get_by_username",
+                new { ten_dang_nhap = username },
                 CommandType.StoredProcedure);
         }
     }

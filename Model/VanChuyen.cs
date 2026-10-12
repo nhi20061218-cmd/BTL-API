@@ -3,39 +3,33 @@ using System.Collections.Generic;
 
 namespace Model;
 
-public partial class VanChuyen
-{
-    public int MaVanChuyen { get; set; }
 
-    public int MaLoNongSan { get; set; }
+    public class VanChuyen
+    {
+        public int MaVanChuyen { get; set; }
+        public string MaLoHang { get; set; } = string.Empty;
+        public string TenSanPham { get; set; } = string.Empty;
+        public decimal SoLuong { get; set; }
+        public DateTime HanSuDung { get; set; }
+        public int MaNhaPhanPhoi { get; set; }
+        public string? DaiLy { get; set; } // Lấy tên NPP khi JOIN
 
-    public int MaNhaPhanPhoi { get; set; }
+        public int? MaKhoXuat { get; set; }
+        public string? TuKho { get; set; } // Tên kho xuất khi JOIN
 
-    public int? MaKhoXuat { get; set; }
+        public int? MaKhoNhap { get; set; }
+        public string? DenKho { get; set; } // Tên kho nhập khi JOIN
 
-    public int? MaKhoNhap { get; set; }
+        public int? MaSieuThiNhan { get; set; }
+        public string? DenSieuThi { get; set; } // Tên siêu thị nhận khi JOIN
 
-    public int? MaSieuThiNhan { get; set; }
+        public string? ThongTinXe { get; set; }
+        public string TrangThai { get; set; } = "Picked";
 
-    public string? ThongTinXe { get; set; }
+        public DateTime? NgayLayHang { get; set; }
+        public DateTime? NgayGiaoHang { get; set; }
 
-    public string? ThongTinTuyenDuong { get; set; }
+        public int? NguoiDungId { get; set; } // Dùng để truyền xuống SP ghi Nhật ký
+        public int RecordCount { get; set; } // Dùng cho phân trang
+    }
 
-    public string TrangThai { get; set; } = null!;
-
-    public DateTime? NgayLayHang { get; set; }
-
-    public DateTime? NgayGiaoHang { get; set; }
-
-    public DateTime NgayTao { get; set; }
-
-    public virtual KhoHang? MaKhoNhapNavigation { get; set; }
-
-    public virtual KhoHang? MaKhoXuatNavigation { get; set; }
-
-    public virtual LoNongSan MaLoNongSanNavigation { get; set; } = null!;
-
-    public virtual NhaPhanPhoi MaNhaPhanPhoiNavigation { get; set; } = null!;
-
-    public virtual SieuThi? MaSieuThiNhanNavigation { get; set; }
-}
