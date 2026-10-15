@@ -1,10 +1,11 @@
 ﻿using BLL;
+using BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
-using BLL.Interfaces;
 
-namespace API_Core.Controllers
+namespace API_Batch.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,7 +17,7 @@ namespace API_Core.Controllers
         {
             _sanPhamBusiness = sanPhamBusiness;
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost("create")]
         public IActionResult Create([FromBody] SanPham request)
         {
@@ -24,6 +25,7 @@ namespace API_Core.Controllers
             return Ok(new { message = "Thêm sản phẩm thành công!", maSanPham = newId });
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("update")]
         public IActionResult Update([FromBody] SanPham request)
         {
@@ -31,6 +33,8 @@ namespace API_Core.Controllers
             return Ok(new { message = "Cập nhật sản phẩm thành công!" });
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id)
         {

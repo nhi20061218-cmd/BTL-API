@@ -12,8 +12,12 @@ namespace DAL
     public class NguoiDungRepository : INguoiDungRepository
     {
         private readonly IDatabaseHelper _dbHelper;
-
         public NguoiDungRepository(IDatabaseHelper dbHelper) => _dbHelper = dbHelper;
+
+        public NguoiDung GetByUsername(string tenDangNhap)
+        {
+            return _dbHelper.Query<NguoiDung>("sp_nguoidung_get_by_username", new { ten_dang_nhap = tenDangNhap }, CommandType.StoredProcedure).FirstOrDefault();
+        }
 
         public bool Create(NguoiDung model)
         {
@@ -29,13 +33,51 @@ namespace DAL
             return true;
         }
 
-        public NguoiDung GetByUsername(string username)
+        public NguoiDung GetById(int maNguoiDung)
         {
-            // Gọi tên SP mới và đổi biến sang chuẩn snake_case
-            return _dbHelper.QueryFirstOrDefault<NguoiDung>(
-                "sp_nguoidung_get_by_username",
-                new { ten_dang_nhap = username },
-                CommandType.StoredProcedure);
+            return _dbHelper.Query<NguoiDung>("sp_nguoidung_get_by_id", new { ma_nguoi_dung = maNguoiDung }, CommandType.StoredProcedure).FirstOrDefault();
+        }
+
+        public IEnumerable<NguoiDung> Search(int pageIndex, int pageSize, string? hoTen, string? tenDangNhap, int? maVaiTro)
+        {
+            return _dbHelper.Query<NguoiDung>("sp_nguoidung_search", new
+            {
+                page_index = pageIndex,
+                page_size = pageSize,
+                ho_ten = hoTen,
+                ten_dang_nhap = tenDangNhap,
+                ma_vai_tro = maVaiTro
+            }, CommandType.StoredProcedure);
+        }
+
+        public bool Update(NguoiDung model)
+        {
+            _dbHelper.Execute("sp_nguoidung_update", new { ma_nguoi_dung = model.MaNguoiDung, ho_ten = model.HoTen, email = model.Email, so_dien_thoai = model.SoDienThoai }, CommandType.StoredProcedure);
+            return true;
+        }
+
+        public bool SetRole(int maNguoiDung, int maVaiTro)
+        {
+            _dbHelper.Execute("sp_nguoidung_set_role", new { ma_nguoi_dung = maNguoiDung, ma_vai_tro = maVaiTro }, CommandType.StoredProcedure);
+            return true;
+        }
+
+        public bool SetActive(int maNguoiDung, bool hoatDong)
+        {
+            _dbHelper.Execute("sp_nguoidung_set_active", new { ma_nguoi_dung = maNguoiDung, hoat_dong = hoatDong }, CommandType.StoredProcedure);
+            return true;
+        }
+
+        public bool SetPassword(int maNguoiDung, string matKhauHash)
+        {
+            _dbHelper.Execute("sp_nguoidung_set_password", new { ma_nguoi_dung = maNguoiDung, mat_khau_hash = matKhauHash }, CommandType.StoredProcedure);
+            return true;
+        }
+
+        public bool Delete(int maNguoiDung)
+        {
+            _dbHelper.Execute("sp_nguoidung_delete", new { ma_nguoi_dung = maNguoiDung }, CommandType.StoredProcedure);
+            return true;
         }
     }
 }

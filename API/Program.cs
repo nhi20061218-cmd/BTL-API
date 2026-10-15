@@ -1,4 +1,5 @@
 ﻿
+using API;
 using BLL;
 using BLL.Interfaces;
 using DAL;
@@ -102,7 +103,7 @@ try
     // ==========================================
 
     // Bắt lỗi toàn cục của thầy giáo
-
+    app.UseMiddleware<GlobalExceptionMiddleware>();
     app.UseResponseCompression();
     app.UseSerilogRequestLogging();
 

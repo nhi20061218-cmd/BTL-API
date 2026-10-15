@@ -1,10 +1,12 @@
 ﻿using BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 
-namespace API_Core.Controllers
+namespace API_Batch.Controllers
 {
+    [Authorize(Roles = "Inspector")]
     [Route("api/[controller]")]
     [ApiController]
     public class KiemDinhController : ControllerBase

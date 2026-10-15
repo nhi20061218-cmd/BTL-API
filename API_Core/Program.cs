@@ -16,16 +16,6 @@ builder.Services.AddSwaggerGen();
 // Đăng ký dùng chung ống nước Database
 builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
 
-builder.Services.AddTransient<ITrangTraiRepository, TrangTraiRepository>();
-builder.Services.AddTransient<ITrangTraiBusiness, TrangTraiBusiness>();
-builder.Services.AddTransient<ILoNongSanRepository, LoNongSanRepository>();
-builder.Services.AddTransient<ILoNongSanBusiness, LoNongSanBusiness>();
-builder.Services.AddTransient<IChungNhanRepository, ChungNhanRepository>();
-builder.Services.AddTransient<IChungNhanBusiness, ChungNhanBusiness>();
-builder.Services.AddTransient<IKiemDinhRepository, KiemDinhRepository>();
-builder.Services.AddTransient<IKiemDinhBusiness, KiemDinhBusiness>();
-builder.Services.AddTransient<ISanPhamRepository, SanPhamRepository>();
-builder.Services.AddTransient<ISanPhamBusiness, SanPhamBusiness>();
 builder.Services.AddTransient<INhaPhanPhoiRepository, NhaPhanPhoiRepository>();
 builder.Services.AddTransient<INhaPhanPhoiBusiness, NhaPhanPhoiBusiness>();
 builder.Services.AddTransient<ISieuThiRepository, SieuThiRepository>();

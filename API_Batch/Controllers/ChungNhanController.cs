@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 
-namespace API_Core.Controllers
+namespace API_Batch.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
