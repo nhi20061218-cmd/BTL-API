@@ -17,7 +17,7 @@ namespace API_Batch.Controllers
         {
             _sanPhamBusiness = sanPhamBusiness;
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Farmer,Admin")]
         [HttpPost("create")]
         public IActionResult Create([FromBody] SanPham request)
         {
@@ -25,7 +25,7 @@ namespace API_Batch.Controllers
             return Ok(new { message = "Thêm sản phẩm thành công!", maSanPham = newId });
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Farmer,Admin")]
         [HttpPut("update")]
         public IActionResult Update([FromBody] SanPham request)
         {
@@ -34,7 +34,7 @@ namespace API_Batch.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Farmer,Admin")]
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id)
         {

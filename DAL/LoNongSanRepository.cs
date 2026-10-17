@@ -42,14 +42,15 @@ namespace DAL
         public bool Update(LoNongSan model)
         {
             // Theo SQL, sp_lonongsan_update chỉ nhận 3 tham số: mã lô, số lượng và hạn sử dụng
-            _dbHelper.Execute("sp_lonongsan_update", new
+            int rowAffected = _dbHelper.QueryFirstOrDefault<int>("sp_lonongsan_update", new
             {
                 ma_lo_nong_san = model.MaLoNongSan,
                 so_luong = model.SoLuong,
                 han_su_dung = model.HanSuDung
             }, CommandType.StoredProcedure);
 
-            return true;
+            // Trả về true nếu có ít nhất 1 dòng được cập nhật, ngược lại là false
+            return rowAffected > 0;
         }
 
         public bool Delete(int id)

@@ -3,21 +3,19 @@ using System.Collections.Generic;
 
 namespace Model;
 
-public partial class NhatKyHeThong
+public class NhatKy
 {
-    public long MaNhatKy { get; set; }
-
-    public string TenBang { get; set; } = null!;
-
-    public int MaBanGhi { get; set; }
-
-    public string LoaiHanhDong { get; set; } = null!;
-
-    public string? GiaTriCu { get; set; }
-
-    public string? GiaTriMoi { get; set; }
-
-    public int? MaNguoiThayDoi { get; set; }
-
-    public DateTime NgayThayDoi { get; set; }
+    public int MaNhatKy { get; set; }
+    public string? HanhDong { get; set; }
+    public string? DoiTuong { get; set; }
+    public string? MaDoiTuong { get; set; }
+    public int? MaNguoiDung { get; set; }
+    public string? DiaChiIP { get; set; }
+    public string? GhiChu { get; set; }
+    public DateTime NgayGio { get; set; }
+    public int RecordCount { get; set; } // Phục vụ cho hàm Search phân trang
+                                         // (Do SP sp_nhatky_thong_ke_quet select ra 3 cột: MaLoHang, SoLanQuet, LanQuetCuoi)
+    public string? MaLoHang { get; set; }
+    public int SoLanQuet { get; set; }
+    public DateTime? LanQuetCuoi { get; set; }
 }

@@ -7,6 +7,7 @@ using DAL.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using static BLL.Interfaces.INhatKyHeThongBusiness;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services.AddTransient<IDatabaseHelper, DatabaseHelper>();
 
 builder.Services.AddTransient<INguoiDungRepository, NguoiDungRepository>();
 builder.Services.AddTransient<INguoiDungBusiness, NguoiDungBusiness>();
+builder.Services.AddTransient<INhatKyRepository, NhatKyRepository>();
+builder.Services.AddTransient<INhatKyBusiness, NhatKyBusiness>();
 
 // Khi nào viết code cho bảng Nhật Ký thì bạn un-comment 2 dòng dưới:
 // builder.Services.AddTransient<INhatKyRepository, NhatKyRepository>();

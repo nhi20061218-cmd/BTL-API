@@ -32,7 +32,16 @@ namespace BLL
 
         public bool Update(LoNongSan model)
         {
-            return _res.Update(model);
+            // Gọi xuống tầng DAL
+            bool isSuccess = _res.Update(model);
+
+            // Nếu SQL báo về cập nhật 0 dòng (isSuccess = false)
+            if (!isSuccess)
+            {
+                throw new System.Exception("Không thể cập nhật! Lô hàng này không tồn tại hoặc đã qua vòng kiểm duyệt (Trạng thái không phải là Registered).");
+            }
+
+            return true;
         }
 
         public bool Delete(int id)
